@@ -1,0 +1,5 @@
+Patrones:
+1-Factory Method
+2-State
+3-Fachada
+4-Adapter

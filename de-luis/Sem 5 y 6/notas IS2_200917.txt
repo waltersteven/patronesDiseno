@@ -1,0 +1,6 @@
+Una peticion se maneja en escala por diferentes entidades
+
+Patron fachada: oculta al Cliente detalles para que solo vea el modulo
+
+Patron adapter: Usar el mismo codigo
+		-el main se comunica con el adapter y no con las clases especificas, 
