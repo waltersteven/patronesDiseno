@@ -1,0 +1,52 @@
+import sys
+
+class XML:
+    def pintar_xml(self,persona):
+        xml = '<persona nombre="%s" edad= "%s" />'
+        xml= xml % (persona.nombre, persona.edad)
+        print(xml)
+
+class JSON:
+    def pintar_json(self, persona):
+        json = '{"nombre":"%s", "edad": %s}'
+        json = json % (persona.nombre, persona.edad)
+        print(json)
+
+class FormatoAdapter:
+    def pintar(self):
+        pass
+
+class XMLAdapter(FormatoAdapter):
+    def pintar(self, persona):
+        XML().pintar_xml(persona)
+    
+class JSONAdapter(FormatoAdapter):
+    def pintar(self, persona):
+        JSON().pintar_json(persona)
+         
+class Persona:
+    def __init__(self,nombre,edad):
+        self.nombre = nombre
+        self.edad = edad
+
+def main():
+    #$ python adapter.py pepito 36 xml
+    #$ <persona nombre="pepito" edad= "36"/>
+    #$ python adapter.py pepito 36 json
+    #$ {"nombre": "pepito", "edad": 36}
+    nombre = sys.argv[1]
+    edad = sys.argv[2]
+    tipo = sys.argv[3]
+
+    persona = Persona(nombre,edad)
+
+    adapter = None
+    if tipo == 'xml':
+        adapter = XMLAdapter()
+    elif tipo == 'json':
+        adapter = JSONAdapter()
+
+    adapter.pintar(persona)
+
+if __name__ == '__main__':
+    main()
