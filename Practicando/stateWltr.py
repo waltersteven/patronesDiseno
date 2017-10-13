@@ -16,7 +16,7 @@ class EstadoAlumno:
 
 class EstadoNoMatriculado(EstadoAlumno):
     def matriculado(self):
-        self.alumno.estado = EstadoMatriculado(self.alumno)
+        self.alumno.estado = EstadoMatriculado(self.alumno) #self.alumno se refiere a EstadoAlumno que es un Alumno y .estado se refiere al atributo del Alumno
     def expulsado(self):
         self.alumno.estado = EstadoExpulsado(self.alumno)
 
@@ -42,7 +42,7 @@ class EstadoEgresado(EstadoAlumno):
 
 class Alumno:
     def __init__(self):
-        self.estado = EstadoNoMatriculado(self)
+        self.estado = EstadoNoMatriculado(self) #Al momento de pasarle self se le pasa al constructor de EstadoAlumno
 
 def main():
     alumno = Alumno() # alumno.estado? => NoMatriculado

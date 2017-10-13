@@ -3,7 +3,7 @@ ESTADO_DOS = 2
 ESTADO_TRES = 3
 
 class Estado:
-    def __init__(self,c lasesita):
+    def __init__(self,clasesita):
         self.entidad = clasesita
 
     def evento_a(self):

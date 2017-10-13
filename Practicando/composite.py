@@ -5,45 +5,45 @@ class ComponenteCarta:
 class Restomiel(ComponenteCarta):
     def __init__(self):
         self.hijos = []
-    def add_hijos(self,hijo):
+    def add_hijos(self, hijo):
         self.hijos.append(hijo)
     def calcular_ventas(self):
-        venta=0
+        venta = 0
         for hijo in self.hijos:
-            venta=venta+hijo.calcular_ventas()
+            venta = venta + hijo.calcular_ventas()
         return venta
 
 class ComidaMarina(ComponenteCarta):
     def __init__(self):
         self.hijos = []
-    def add_hijos(self,hijo):
+    def add_hijos(self, hijo):
         self.hijos.append(hijo)
     def calcular_ventas(self):
-        venta=0
+        venta = 0
         for hijo in self.hijos:
-            venta=venta+hijo.calcular_ventas()
+            venta = venta + hijo.calcular_ventas()
         return venta
 
 class ComidaCriolla(ComponenteCarta):
     def __init__(self):
         self.hijos = []
-    def add_hijos(self,hijo):
+    def add_hijos(self, hijo):
         self.hijos.append(hijo)
     def calcular_ventas(self):
-        venta=0
+        venta = 0
         for hijo in self.hijos:
-            venta=venta+hijo.calcular_ventas()
+            venta = venta + hijo.calcular_ventas()
         return venta
 
 class ComidaInternacional(ComponenteCarta):
     def __init__(self):
         self.hijos = []
-    def add_hijos(self,hijo):
+    def add_hijos(self, hijo):
         self.hijos.append(hijo)
     def calcular_ventas(self):
-        venta=0
+        venta = 0
         for hijo in self.hijos:
-            venta=venta+hijo.calcular_ventas()
+            venta = venta + hijo.calcular_ventas()
         return venta
 
 class Ceviche(ComponenteCarta):
@@ -52,17 +52,17 @@ class Ceviche(ComponenteCarta):
 
 class Mariscos(ComponenteCarta):
     def calcular_ventas(self):
-        return 24
+        return 28
 
 class Combinado(ComponenteCarta):
     def calcular_ventas(self):
-        return 21
+        return 35
 
 class CausaRellena(ComponenteCarta):
     def calcular_ventas(self):
         return 23
 
-class BistecALoPobre(ComponenteCarta):
+class BistecPobre(ComponenteCarta):
     def calcular_ventas(self):
         return 22
 
@@ -83,20 +83,22 @@ class ArrozPollo(ComponenteCarta):
         return 15
 
 def main():
-    #Definir la configuración de nuestra estructura
-    restomiel=Restomiel()
-    comida_marina=ComidaMarina()
-    comida_criolla=ComidaCriolla()
-    comida_internacional=ComidaInternacional()
-    ceviche=Ceviche()
-    mariscos=Mariscos()
-    combinado=Combinado()
-    causa=CausaRellena()
-    bistec=BistecALoPobre()
-    tacutacu=TacuTacu()
-    makis=Makis()
-    fetuccini=Fetuccini()
-    arrozpollo=ArrozPollo()
+
+    #Acá definimos la configuración de la estructura (ARMAMOS EL ARBOL)
+    restomiel = Restomiel()
+    comida_marina = ComidaMarina()
+    comida_criolla = ComidaCriolla()
+    comida_internacional = ComidaInternacional()
+
+    ceviche = Ceviche()
+    mariscos = Mariscos()
+    combinado = Combinado()
+    causa = CausaRellena()
+    bistec = BistecPobre()
+    tacutacu = TacuTacu()
+    makis = Makis()
+    fetuccini = Fetuccini()
+    arroz_pollo = ArrozPollo()
 
     restomiel.add_hijos(comida_marina)
     restomiel.add_hijos(comida_criolla)
@@ -107,14 +109,13 @@ def main():
     comida_criolla.add_hijos(causa)
     comida_criolla.add_hijos(bistec)
     comida_criolla.add_hijos(tacutacu)
-    comida_criolla.add_hijos(arrozpollo)
     comida_internacional.add_hijos(makis)
     comida_internacional.add_hijos(fetuccini)
+    comida_internacional.add_hijos(arroz_pollo)
 
-    #Ejecutamos la operacion
+    #Ejecutamos la operación
     ventas_totales = restomiel.calcular_ventas()
     print(ventas_totales)
 
-
-if __name__=='__main__':
+if __name__ == '__main__':
     main()
